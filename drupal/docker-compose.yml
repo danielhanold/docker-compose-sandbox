@@ -1,0 +1,39 @@
+version: '2'
+
+services:
+  db:
+    image: mysql:5.7
+    user: "1000:50"
+    volumes:
+      - "./.data/db:/var/lib/mysql"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: m39cisk3T
+      MYSQL_DATABASE: drupal
+      MYSQL_USER: drupal
+      MYSQL_PASSWORD: glx94Wrk
+
+  drupal:
+    image: drupal:7.51-apache
+    restart: always
+    depends_on:
+      - db
+    links:
+      - db
+    ports:
+      - 8080:80
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    depends_on:
+      - db
+    links:
+      - db
+    container_name: phpmyadmin
+    environment:
+      - PMA_ARBITRARY=1
+    restart: always
+    ports:
+      - 8000:80
+    volumes:
+      - /sessions
