@@ -17,6 +17,8 @@ services:
   nginx:
     image: haagendazs/drupal-nginx:2
     restart: always
+    volumes_from:
+      - php
     ports:
       - 8000:80
 
