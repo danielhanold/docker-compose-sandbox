@@ -18,16 +18,12 @@ services:
     restart: always
     depends_on:
       - db
-    links:
-      - db
     ports:
       - 8080:80
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     depends_on:
-      - db
-    links:
       - db
     container_name: phpmyadmin
     environment:
