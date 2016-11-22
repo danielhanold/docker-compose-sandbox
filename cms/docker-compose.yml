@@ -1,0 +1,40 @@
+version: '2'
+
+services:
+  mysql:
+    image: mysql:5.7
+    user: "1000:50"
+    # Create a volume for this container
+    volumes:
+      - "./.data/db:/var/lib/mysql"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: m39cisk3T
+      MYSQL_DATABASE: drupal
+      MYSQL_USER: drupal
+      MYSQL_PASSWORD: glx94Wrk
+
+  nginx:
+    image: haagendazs/drupal-nginx:2
+    restart: always
+    ports:
+      - 8000:80
+
+  php:
+    image: haagendazs/drupal-php:2
+    restart: always
+    volumes:
+      - ./:/var/www/html
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    depends_on:
+      - mysql
+    container_name: phpmyadmin
+    environment:
+      - PMA_ARBITRARY=1
+    restart: always
+    ports:
+      - 8001:80
+    volumes:
+      - /sessions
