@@ -25,6 +25,7 @@ services:
     restart: always
     volumes:
       - ./:/var/www/html
+      - files:/var/www/html/files
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -42,3 +43,4 @@ services:
 # Volume definitions
 volumes:
   mysql:
+  files:
