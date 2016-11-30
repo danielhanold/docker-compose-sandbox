@@ -1,11 +1,16 @@
 version: '2'
 
 services:
-  mysql:
+  db:
     image: mysql:5.7
     volumes:
-      - mysql:/var/lib/mysql
+      - db:/var/lib/mysql
     restart: always
+    # Pass in extra parameters to starting mysql to modify
+    # the default collation and character set
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
     environment:
       MYSQL_ROOT_PASSWORD: m39cisk3T
       MYSQL_DATABASE: drupal
@@ -30,7 +35,7 @@ services:
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     depends_on:
-      - mysql
+      - db
     container_name: phpmyadmin
     environment:
       - PMA_ARBITRARY=1
@@ -42,5 +47,5 @@ services:
 
 # Volume definitions
 volumes:
-  mysql:
+  db:
   files:
