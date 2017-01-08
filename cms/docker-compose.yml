@@ -6,6 +6,12 @@ services:
     volumes:
       - db:/var/lib/mysql
     restart: always
+    # Required to connect to MySQL service from localhost, or host machine.
+    # Port is required, as EXPOSE command in mysql image only indicates
+    # that MySQL container is listening on the port. Onle listing the ports
+    # makes them accessible from the outside.
+    ports:
+      - 9090:3306
     # Pass in extra parameters to starting mysql to modify
     # the default collation and character set
     command:
