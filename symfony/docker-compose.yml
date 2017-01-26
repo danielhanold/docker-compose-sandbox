@@ -30,6 +30,9 @@ services:
     restart: always
     volumes:
       - ./:/var/www/symfony
+      - php_symfony_cache:/var/www/symfony/var/cache
+      - php_symfony_logs:/var/www/symfony/var/logs
+      - php_symfony_sessions:/var/www/symfony/var/sessions
 
   nginx:
     build: nginx
@@ -56,3 +59,6 @@ services:
 volumes:
   db:
   files:
+  php_symfony_cache:
+  php_symfony_logs:
+  php_symfony_sessions:

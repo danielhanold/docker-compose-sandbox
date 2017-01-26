@@ -32,4 +32,13 @@ RUN echo "xdebug.remote_port=9001" >> /usr/local/etc/php/conf.d/docker-php-ext-x
 RUN echo 'alias sf="php app/console"' >> ~/.bashrc
 RUN echo 'alias sf3="php bin/console"' >> ~/.bashrc
 
+# Create files directory in order to set permissions
+# correctly. We will mount a data-only container
+# in this location.
+RUN mkdir -p /var/www/symfony/var/cache && \
+    mkdir -p /var/www/symfony/var/logs && \
+    mkdir -p /var/www/symfony/var/sessions && \
+    chown -R 1000:33 /var/www/symfony/var/cache /var/www/symfony/var/logs /var/www/symfony/var/sessions && \
+    chmod -R 0770 /var/www/symfony/var/cache /var/www/symfony/var/logs /var/www/symfony/var/sessions
+
 WORKDIR /var/www/symfony
