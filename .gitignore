@@ -1,4 +1,6 @@
 .data
+
+# Drupal application files
 cms/.editorconfig
 cms/.gitignore
 cms/.htaccess
@@ -28,3 +30,16 @@ cms/themes/
 cms/update.php
 cms/web.config
 cms/xmlrpc.php
+
+# Symfony Application Files
+symfony/README.md
+symfony/app/
+symfony/bin/
+symfony/composer.json
+symfony/composer.lock
+symfony/phpunit.xml.dist
+symfony/src/
+symfony/tests/
+symfony/var/
+symfony/vendor/
+symfony/web/
