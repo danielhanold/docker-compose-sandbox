@@ -1,0 +1,58 @@
+version: '2'
+
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - db:/var/lib/mysql
+    restart: always
+    # Required to connect to MySQL service from localhost, or host machine.
+    # Port is required, as EXPOSE command in mysql image only indicates
+    # that MySQL container is listening on the port. Onle listing the ports
+    # makes them accessible from the outside.
+    ports:
+      - 9090:3306
+    # Pass in extra parameters to starting mysql to modify
+    # the default collation and character set
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpasswd
+      MYSQL_DATABASE: symfony
+      MYSQL_USER: symfony_user
+      MYSQL_PASSWORD: symfony_password
+
+  php:
+    build: php7-fpm
+    ports:
+      - 9000:9000
+    restart: always
+    volumes:
+      - ./:/var/www/symfony
+
+  nginx:
+    build: nginx
+    restart: always
+    volumes_from:
+      - php
+    ports:
+      - 80:80
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    depends_on:
+      - db
+    container_name: phpmyadmin
+    environment:
+      - PMA_ARBITRARY=1
+    restart: always
+    ports:
+      - 8001:80
+    volumes:
+      - /sessions
+
+# Volume definitions
+volumes:
+  db:
+  files:
