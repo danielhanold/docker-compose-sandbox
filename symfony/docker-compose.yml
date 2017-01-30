@@ -55,6 +55,19 @@ services:
     volumes:
       - /sessions
 
+  # Requires modification on default Docker host on OSX.
+  # @see https://github.com/docker-library/elasticsearch/issues/133#issuecomment-257459826
+  elasticsearch:
+    image: elasticsearch
+    ports:
+      - 9200:9200
+      - 9300:9300
+    security_opt:
+      - label:seccomp:unconfined
+    command: elasticsearch -Etransport.host=0.0.0.0 -Ediscovery.zen.minimum_master_nodes=1
+    environment:
+      ES_JAVA_OPTS: "-Xms1g -Xmx1g"
+
 # Volume definitions
 volumes:
   db:

@@ -32,6 +32,7 @@ cms/web.config
 cms/xmlrpc.php
 
 # Symfony Application Files
+symfony/.idea
 symfony/README.md
 symfony/app/
 symfony/bin/
