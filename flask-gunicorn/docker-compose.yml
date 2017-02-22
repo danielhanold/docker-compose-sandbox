@@ -9,7 +9,7 @@ services:
     volumes:
       - ./web:/usr/src/app
       - /usr/src/app/project/static
-    command: /usr/local/bin/gunicorn -w 2 -b :8000 project:app
+    command: /usr/local/bin/gunicorn -w 2 -b :8000 wsgi:app
 
   nginx:
     restart: always

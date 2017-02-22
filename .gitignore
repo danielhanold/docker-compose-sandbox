@@ -47,4 +47,4 @@ symfony/web/
 
 # Flask
 flask-gunicorn/.idea
-flask-gunicorn/web/__pycache__
+__pycache__
