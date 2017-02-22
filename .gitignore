@@ -44,3 +44,7 @@ symfony/tests/
 symfony/var/
 symfony/vendor/
 symfony/web/
+
+# Flask
+flask-gunicorn/.idea
+flask-gunicorn/web/__pycache__
