@@ -1,14 +1,44 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    {% if title %}
-    <title>{{ title }} - DNAinfo</title>
-    {% else %}
-    <title>Welcome to DNAinfo</title>
-    {% endif %}
-  </head>
-  <body>
-    <div>DNAinfo: <a href="/index">Home</a></div>
-    <hr>
+<head>
+    <meta charset="UTF-8" />
+    <head>
+        {% if title %}
+        <title>{{ title }} - DNAinfo</title>
+        {% else %}
+        <title>Neighborhood News - DNAinfo.com</title>
+        {% endif %}
+    </head>
+    {% block stylesheets %}
+    <style>
+    header, footer {
+        max-width: 1080px;
+        min-width: 320px;
+        width: calc(100% - 30px);
+        margin: auto;
+        padding: 15px;
+        font-family: Helvetica;
+    }
+    footer .tou-pp, footer .copyright {
+        text-align: center;
+        white-space: nowrap;
+    }
+    header {
+        height: 40px;
+        position: relative;
+    }
+    header img {
+        position: absolute;
+        height: 40px;
+    }
+    </style>
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="" />
+</head>
+<body>
+    {% include 'navigation.html' %}
     {% block content %}{% endblock %}
-  </body>
+    {% block javascripts %}{% endblock %}
+    {% include 'footer.html' %}
+</body>
 </html>
