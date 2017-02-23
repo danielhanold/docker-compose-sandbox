@@ -8,7 +8,7 @@
 {% block content %}
 <h1>Elasticsearch POC</h1>
 <div class="form-wrapper">
-    <form method="GET" action="/articlelist">
+    <form method="GET" action="/elasticsearch">
         <label>
             Search
             <input name="q" type="text">
@@ -16,5 +16,12 @@
         </label>
     </form>
 </div>
-{{ debug }}
+<div class="form-wrapper">
+    <h2>{{ list_headline }}</h2>
+    <ul>
+    {% for hit in hits %}
+        <li><a href="{{ url_for('story_id', id=hit._id) }}">{{ hit._source.headline}} - Published on {{ hit._source.created|datetimeformat }}</li>
+    {% endfor %}
+    </ul>
+</div>
 {% endblock %}

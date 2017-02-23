@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block stylesheets %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/story.css') }}" />
+{% endblock %}
+
+{% block content %}
+<h1>{{ story.headline }}</h1>
+<div class="meta"></div>
+<div class="article-body">{{ story.body|safe }}</div>
+
+{% endblock %}

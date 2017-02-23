@@ -10,6 +10,7 @@ footer .tou-pp, footer .copyright {
     text-align: center;
     white-space: nowrap;
 }
+
 header {
     height: 40px;
     position: relative;
@@ -18,10 +19,20 @@ header img {
     position: absolute;
     height: 40px;
 }
-body            { font-family: sans-serif; background: #eee; }
+.logo {
+    margin: 30px 0px 20px 0px;
+    width: 150px;
+}
+body            {
+  font-family: sans-serif; background: #eee;
+  max-width: 1080px;
+  min-width: 320px;
+  width: calc(100% - 30px);
+  margin: auto;
+}
 a, h1, h2       { color: darkslategray; }
 h1, h2          { font-family: 'Arial', serif; margin: 0; font-weight: normal; }
-h1              { border-bottom: 2px solid #eee; }
+h1              { border-bottom: 2px solid #eee;   margin-top: 20px; margin-bottom: 10px;}
 h2              { font-size: 1.2em; }
 
 .page           { margin: 2em auto; width: 35em; border: 5px solid #ccc;
