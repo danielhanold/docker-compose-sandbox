@@ -10,28 +10,7 @@
         {% endif %}
     </head>
     {% block stylesheets %}
-    <style>
-    header, footer {
-        max-width: 1080px;
-        min-width: 320px;
-        width: calc(100% - 30px);
-        margin: auto;
-        padding: 15px;
-        font-family: Helvetica;
-    }
-    footer .tou-pp, footer .copyright {
-        text-align: center;
-        white-space: nowrap;
-    }
-    header {
-        height: 40px;
-        position: relative;
-    }
-    header img {
-        position: absolute;
-        height: 40px;
-    }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/base.css') }}" />
     {% endblock %}
     <link rel="icon" type="image/x-icon" href="" />
 </head>
