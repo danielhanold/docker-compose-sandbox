@@ -6,8 +6,10 @@
 {% endblock %}
 
 {% block content %}
-<h1>{{ story.headline }}</h1>
-<div class="meta"></div>
-<div class="article-body">{{ story.body|safe }}</div>
+<div class="story">
+    <h1>{{ story.headline }}</h1>
+    <div class="meta">Article published on {{ story.created|datetimeformat}}.</div>
+    <div class="article-body">{{ story.body|safe }}</div>
+</div>
 
 {% endblock %}

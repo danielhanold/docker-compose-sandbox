@@ -27,12 +27,8 @@ def index():
 
 @app.route('/elasticsearch')
 def elasticsearch():
-    es = Elasticsearch([{
-        'host': 'elasticsearch',
-        'port': 9200
-    }])
-
     # See if a search was already executed.
+    es = create_elasticache_obj()
     search_value = request.args.get('q')
     if search_value == None:
         app.logger.error('No search value found')
@@ -55,14 +51,9 @@ def elasticsearch():
 
 @app.route('/story/<id>')
 def story_id(id):
-    es = Elasticsearch([{
-        'host': 'elasticsearch',
-        'port': 9200
-    }])
-
     # Get a single document.
+    es = create_elasticache_obj()
     document = es.get(index='drupal', id=id)
-
     return render_template('story.html', story=document['_source'], document=document)
 
 
@@ -72,6 +63,14 @@ def login():
     return render_template('login.html',
                            title='Sign In',
                            form=form)
+
+# Create elasticache object.
+def create_elasticache_obj():
+    es = Elasticsearch([{
+        'host': 'elasticsearch',
+        'port': 9200
+    }])
+    return es
 
 # Add custom filter for better time display.
 # @see http://stackoverflow.com/questions/3682748/converting-unix-timestamp-string-to-readable-date-in-python
