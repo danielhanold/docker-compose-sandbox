@@ -23,3 +23,38 @@ services:
       - web
     depends_on:
     - web
+
+  # Requires modification on default Docker host on OSX.
+  # @see https://github.com/docker-library/elasticsearch/issues/133#issuecomment-257459826
+  elasticsearch:
+    image: elasticsearch
+    ports:
+      - 9200:9200
+      - 9300:9300
+    security_opt:
+      - label:seccomp:unconfined
+    command: elasticsearch -Etransport.host=0.0.0.0 -Ediscovery.zen.minimum_master_nodes=1
+    environment:
+      ES_JAVA_OPTS: "-Xms1g -Xmx1g"
+
+  kibana:
+    image: kibana:5
+    restart: unless-stopped
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+
+  logstash:
+    image: logstash
+    command: logstash -e 'input { tcp { port => 5000 } } output { elasticsearch { hosts => "elasticsearch:9200" } }'
+    ports:
+      - "5000:5000"
+      # Beats input -- https://www.elastic.co/guide/en/logstash/5.0/plugins-inputs-beats.html
+      - '5044:5044'
+      # UDP input -- https://www.elastic.co/guide/en/logstash/master/plugins-inputs-udp.html#plugins-inputs-udp-codec
+      - '43448:43448/udp'
+      # Monitoring APIs -- https://www.elastic.co/guide/en/logstash/5.0/monitoring.html
+      - '9600:9600'
+    depends_on:
+      - elasticsearch

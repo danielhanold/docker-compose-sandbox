@@ -16,3 +16,4 @@ flask-babel
 guess_language
 flipflop
 coverage
+elasticsearch
