@@ -3,10 +3,17 @@ services:
   web:
     build: .
     ports:
-     - "5000:5000"
+    - "80:5000"
     volumes:
-     - .:/code
+    - .:/code
     depends_on:
-     - redis
+    - redis
+    environment:
+      FLASK_APP: flaskr
+      FLASK_DEBUG: "true"
+    # Without specifying the host, the internal flask server runs on port 127.0.0.1.
+    # This means the server is only accessible from the container itself. Specifying
+    # the port as 0.0.0.0 allows connections from anywhere, including the Docker host.
+    command: flask run --host=0.0.0.0
   redis:
     image: redis
