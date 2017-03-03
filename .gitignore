@@ -1,4 +1,5 @@
 .data
+.idea
 
 # Drupal application files
 cms/.editorconfig
