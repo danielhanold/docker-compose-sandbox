@@ -15,6 +15,7 @@ flask-wtf
 flask-babel
 flask-admin
 flask-auth
+flask-assets
 guess_language
 flipflop
 coverage

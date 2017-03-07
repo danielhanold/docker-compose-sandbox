@@ -1,4 +1,4 @@
-from flask import render_template, request
+from flask import render_template, request, flash
 from elasticsearch import Elasticsearch
 from app import app
 from datetime import datetime
@@ -59,6 +59,7 @@ def story_id(id):
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    flash('This login form does not work yet.')
     form = LoginForm()
     return render_template('login.html',
                            title='Sign In',
