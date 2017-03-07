@@ -14,6 +14,7 @@ flask-whooshalchemy
 flask-wtf
 flask-babel
 flask-admin
+flask-auth
 guess_language
 flipflop
 coverage
