@@ -8,7 +8,6 @@ services:
       - "8000"
     volumes:
       - ./web:/usr/src/app
-      - /usr/src/app/static
     # 2 ways of running Django server: Gunicorn or Python built-in server.
     # They are mutually exclusive.
     #
