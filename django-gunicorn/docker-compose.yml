@@ -13,6 +13,9 @@ services:
     # Debugging with Gunicorn is a bit hard according to this posts
     # http://stackoverflow.com/questions/8950674/debugging-a-flask-app-running-in-gunicorn
     command: /usr/local/bin/gunicorn -w 2 -b :8000 wsgi:application --reload
+    #
+    # Use Python's built-in webserver instead of Gunicorn.
+    # command: python manage.py runserver 8000
 
   nginx:
     restart: always
