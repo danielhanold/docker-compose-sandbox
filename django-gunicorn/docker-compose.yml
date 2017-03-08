@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+  web:
+    # restart: always
+    build: ./web
+    expose:
+      - "8000"
+    volumes:
+      - ./web:/usr/src/app
+      - /usr/src/app/static
+    # Detect code changes automatically and reload Gunicorn
+    # Debugging with Gunicorn is a bit hard according to this posts
+    # http://stackoverflow.com/questions/8950674/debugging-a-flask-app-running-in-gunicorn
+    command: /usr/local/bin/gunicorn -w 2 -b :8000 wsgi:application --reload
+
+  nginx:
+    restart: always
+    build: ./nginx
+    ports:
+      - "80:80"
+    volumes:
+      - /www/static
+    volumes_from:
+      - web
+    depends_on:
+    - web
