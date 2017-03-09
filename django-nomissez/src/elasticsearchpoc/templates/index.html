@@ -1,0 +1,33 @@
+<div>
+{% extends "_base.html" %}
+{% block nav %} 
+ {% include 'nav.html' %}
+{% endblock nav %}
+</div>
+<div>
+{% block content %}
+  <div class="container">
+    <h1>Find An Article.</h1>
+
+    <form action="" method="get">
+      <span class="glyphicon glyphicon-search"><label for="id_q"></label></span>
+      <input id="id_q" name="q" type="text">
+      <input type="submit" value="Submit">
+    </form>
+    {% if stories%}
+      <h2>Stories:</h2>
+      <ul>
+        {% for story in stories %}
+        {% with source=story|get_underscore:"_source" index=story|get_underscore:"_id" %}
+        <li><a href ="/elastic/story/{{index}}">{{ source.headline}}</a></li>
+        {% endwith %}
+    
+        {% endfor %}
+      </ul>
+    {% else %}
+      <h1> There are no stories related to this term</h1>
+    {% endif %}
+
+</div>
+{% endblock content%}
+</div>

@@ -1,0 +1,15 @@
+{% load staticfiles %}
+<div class="nav">
+  <div class="logo">
+    <a href="/elastic"><img class="dna-logo" src="{% static "images/logo_noshadow.svg" %}" alt="DNAinfo"> </a>
+  </div>
+  <div class="search">
+    <form action="/elastic" method="get">
+    <button type="submit" value="Submit">
+          <label for="id_q">SUBMIT</label>
+          </button>
+      <input id="id_q" name="q" type="text">
+    		
+      	</form>
+    </div>
+</div>

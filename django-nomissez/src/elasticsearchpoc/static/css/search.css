@@ -1,0 +1,37 @@
+   h1 {
+        font-family: "Titillium Web",sans-serif,Helvetica,Arial,sans-serif;
+        font-size: 40px;
+        line-height: 50px;
+        margin: 20px 0 25px;
+        font-weight: 700;
+
+    }
+
+
+    .nav {
+        border-bottom: 1px solid #eae9e9;;
+        position: fixed;
+        display: inline;
+        width: 100%;
+        left: 0;
+        top: 0;
+        padding-bottom: 20px;
+    }
+
+    .search {
+        float: right;
+        padding-right: 20px;
+    }
+
+    .container {
+        font-family: "Titillium Web",sans-serif,Helvetica,Arial,sans-serif;
+        font-size: 14px;
+        padding-top: 100px;
+    }
+
+    .logo {
+        padding-top: 20px;
+        padding-right: 200px;
+    }
+
+
