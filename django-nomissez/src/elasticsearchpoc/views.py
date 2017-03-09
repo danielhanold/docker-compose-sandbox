@@ -13,13 +13,15 @@ def index(request):
 	return render(request, 'index.html',  {'stories': esResponse})
 
 def story(request):
-	
-	
+
+
 	storyId = request.path.rsplit('/', 1)[-1]
 	esResponse = es.get(index='test-elastic', id=storyId)['_source']
 	publishDate = datetime.datetime.fromtimestamp(esResponse['created'])
 	esResponse['publishDate'] = publishDate.strftime('%B %d, %Y %H:%M:%S')
 
 	return render(request, 'story.html', {'article': esResponse})
-	
-	
+
+
+def hello(request):
+	return HttpResponse('hello')
