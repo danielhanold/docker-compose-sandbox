@@ -1,0 +1,24 @@
+{% extends "_base.html" %}
+
+{% block content %}
+  <div class="container">
+    <div class="story-head">
+      <h1>{{ article.headline }}</h1>
+      <div class="abs-outer-box">
+        <div class="reporter-display">
+          <img class="bio-media-object" src="http://{{author.thumbnail}}/thumbnail.jpg"><a href= "mailto:{{author.email_alias}}?Subject={{article.headline}}">{{ author.first_name }} {{ author.last_name }}</a> {{ article.publishDate }}
+         </div>
+        <div class="media-heading">
+     
+        </div>
+      </div>
+    </div>
+    <div class="article-container">
+      <div class="article">
+        {% autoescape off %}
+          {{article.body}}
+        {% endautoescape  %}
+      </div>
+    </div>
+  </div>
+{% endblock content %}

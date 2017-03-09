@@ -1,0 +1,80 @@
+
+    h1 {
+        font-family: "Titillium Web",sans-serif,Helvetica,Arial,sans-serif;
+        font-size: 40px;
+        line-height: 50px;
+        margin: 20px 0 25px;
+        font-weight: 700;
+
+    }
+
+    a {
+    	color: #2e2925;
+    	display: block;
+    	font-size: 12px;
+    	font-weight: bold;
+    	line-height: 16px;
+    	margin: 4px 0 0;
+    }
+
+    .logo {
+        float: left;
+    	padding: 20px 10px 10px 20px;
+   
+    }
+
+    .article {
+        padding: 20px 10px 10px 20px;
+        margin: 0 0 15px 0;
+        font-family: Georgia,"Times New Roman",Times,serif;
+        font-size: 18px;
+        line-height: 30px;
+        color: #2e2925;
+    }
+
+    .article a{
+        margin: 0 0 15px 0;
+        font-family: Georgia,"Times New Roman",Times,serif;
+        font-size: 18px;
+        line-height: 30px;
+        color: #2e2925;
+        color: #0073a3;
+    }
+
+    .nav {
+        width: 100%;
+        box-shadow: 0px 2px 5px #888888;
+    }
+
+    .button {
+         border: none;
+         background-color: Transparent;
+         outline:none;
+    }
+
+    .story-head {
+        display: box;
+        font-family: "Titillium Web",sans-serif,Helvetica,Arial,sans-serif;
+        font-size: 14px;
+        line-height: 1.42857;
+    }
+
+    .abs-outer-box {
+        padding: 20px 10px 10px 20px;
+        border-top: 1px solid #eae9e9;
+        border-bottom: 1px solid #eae9e9;
+        min-height: 99px;
+
+        width: 1000px;
+    }
+
+    .report-display{
+       width:900px
+    }
+
+    .search {
+        padding: 20px 10px 10px 20px;
+        display: inline-block;
+        float: right;
+    }
+
