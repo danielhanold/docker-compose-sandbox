@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ escape(handler.settings["site_title"]) }}</title>
+    <link rel="stylesheet" href="{{ static_url("site.css") }}" type="text/css">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    {% block head %}{% end %}
+</head>
+<body>
+    <div id="body">
+        <div id="header">
+            <div>
+                <a href="/"><img class="dna-logo" src="//www.dnainfo.com/img/svg/logo_noshadow.svg" alt="DNAinfo"></a>
+            </div>
+            <h3>DnaInfo Elasticsearch Tool</h3>
+    </div>
+        <div id="content">
+            {% block body %}{% end %}
+        </div>
+    </div>
+
+    {% block bottom %}{% end %}
+</body>
+</html>

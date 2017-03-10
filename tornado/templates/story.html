@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% autoescape None %}
+{% block body %}
+<div>
+    <form action="/" method="post">
+        <input type="text" name="keyword" class="text-field" placeholder="Enter Keyword" />
+        <input type="submit" name="search" value="Search">
+    </form>
+</div>
+<div class="search-list">
+    {% try %}
+    {% if result %}
+
+    <div class="">
+        <div>{{ result[0]['_source']['body'] }}</div>
+    </div>
+    {% end %}
+    {% except %}
+    {% end %}
+</div>
+{% end %}

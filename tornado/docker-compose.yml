@@ -1,0 +1,25 @@
+ version: '2'
+ services:
+   web:
+     build: .
+     command: python app.py runserver 0.0.0.0:8000
+     volumes:
+       - .:/code
+     expose:
+      - "8000"
+   elasticsearch:
+     image: elasticsearch
+     ports:
+      - 9200:9200
+      - 9300:9300
+     security_opt:
+      - label:seccomp:unconfined
+     command: elasticsearch -Etransport.host=0.0.0.0 -Ediscovery.zen.minimum_master_nodes=1
+     environment:
+      ES_JAVA_OPTS: "-Xms1g -Xmx1g"
+   nginx:
+     build: ./nginx
+     ports:
+      - "8000:8000"
+     depends_on:
+      - web

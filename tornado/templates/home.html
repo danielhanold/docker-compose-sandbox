@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% autoescape None %}
+{% block body %}
+    <div>
+        <form action="{{ request.path }}" method="post">
+            <input type="text" name="keyword" class="text-field" placeholder="Enter Keyword" />
+            <input type="submit" name="search" value="Search">
+        </form>
+    </div>
+    <div class="search-list">
+        {% try %}
+            {% if results %}
+               {% for result in results %}
+                <div><a href="/story/{{ result['_id'] }}">{{result['_source']['headline'] }}</a></div>
+                <div class="teaser">
+                    <div>{{ result['_source']['teaser'] }}</div>
+                </div>
+               {% end %}
+            {% end %}
+        {% except %}
+        {% end %}
+    </div>
+{% end %}
