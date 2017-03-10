@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from elasticsearch import Elasticsearch
 
+
 # Create your views here.
 def index(request):
     # Get a single document.
