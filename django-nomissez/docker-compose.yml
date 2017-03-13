@@ -5,8 +5,8 @@
       ports:
         - "8000:8000"
       volumes:
-        - ./src/composeexample/static:/static
         - ./src/elasticsearchpoc/static:/static
+        - ./src:/code
       depends_on:
         - web 
    db:
@@ -17,8 +17,6 @@
      build: .
      volumes:
        - ./src:/code
-       - ./src/composeexample/static:/static
-       - ./src/elasticsearchpoc/static:/static
      command: bash -c "python manage.py makemigrations && python manage.py migrate && gunicorn composeexample.wsgi -b 0.0.0.0:8000 --reload"
      expose: 
       - "8000"

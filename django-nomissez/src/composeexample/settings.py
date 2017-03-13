@@ -60,20 +60,15 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'composeexample.urls'
 
 TEMPLATES = [
+
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'BACKEND': 'django.template.backends.jinja2.Jinja2',
+        'DIRS': [os.path.join(BASE_DIR, 'elasticsearchpoc/templates/jinja2')],
         'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
-            'builtins': ['elasticsearchpoc.templatetags.elastic_extras']
-        },
+        'OPTIONS': {'environment': 'elasticsearchpoc.views.environment',
+        }, 
     },
+
 ]
 
 WSGI_APPLICATION = 'composeexample.wsgi.application'
@@ -112,3 +107,5 @@ USE_TZ = True
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+
+
