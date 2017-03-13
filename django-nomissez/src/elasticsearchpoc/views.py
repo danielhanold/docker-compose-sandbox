@@ -19,11 +19,13 @@ def environment(**options):
 
 es = Elasticsearch([{'host':'elasticsearch', 'port':9200}])
 
+@cache_page(60 * 15)
 def index(request):
 	searchTerm = request.GET.get("q")
 	esResponse = es.search(index='test-elastic', q=searchTerm, sort="created:desc")['hits']['hits']
 	return render(request, 'index.html',  {'stories': esResponse})
 
+@cache_page(60 * 15)
 def story(request):
 
 

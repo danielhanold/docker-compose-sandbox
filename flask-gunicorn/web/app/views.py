@@ -4,6 +4,7 @@ from app import app
 from datetime import datetime
 from .forms import LoginForm
 import logging
+from app import cache
 
 @app.route('/')
 @app.route('/index')
@@ -49,6 +50,7 @@ def elasticsearch():
 
     return render_template('elasticsearch.html', debug=result, hits=hits, search_executed=search_executed, list_headline=list_headline)
 
+@cache.cached(timeout=120)
 @app.route('/story/<id>')
 def story_id(id):
     # Get a single document.
