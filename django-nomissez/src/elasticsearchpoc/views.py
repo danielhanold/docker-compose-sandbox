@@ -19,16 +19,14 @@ def environment(**options):
 
 es = Elasticsearch([{'host':'elasticsearch', 'port':9200}])
 
-@cache_page(60 * 15)
 def index(request):
 	searchTerm = request.GET.get("q")
 	esResponse = es.search(index='test-elastic', q=searchTerm, sort="created:desc")['hits']['hits']
 	return render(request, 'index.html',  {'stories': esResponse})
 
-@cache_page(60 * 15)
 def story(request):
-	
-	
+
+
 	storyId = request.path.rsplit('/', 1)[-1]
 	esResponse = es.get(index='test-elastic', id=storyId)['_source']
 	publishDate = datetime.datetime.fromtimestamp(esResponse['created'])
@@ -38,5 +36,4 @@ def story(request):
 
 def hello(request):
 	return HttpResponse("HELLO SIMON")
-	
-	
+
