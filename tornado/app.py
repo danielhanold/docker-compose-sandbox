@@ -38,7 +38,7 @@ class Application(tornado.web.Application):
             static_path=os.path.join(os.path.dirname(__file__), "static"),
             site_title=u'DnaInfo - Python POC',
             dna_host=u'http://www.dnainfo.com',
-            debug=True,
+            debug=False,
             cookie_secret="__TODO:_GENERATE_YOUR_OWN_RANDOM_VALUE_HERE__"
         )
         super(Application, self).__init__(handlers, **settings)
