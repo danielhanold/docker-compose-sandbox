@@ -27,14 +27,15 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'web',
-    'localhost'
+    'localhost',
+    '192.168.99.100'
 ]
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'debug_toolbar',
+    #'debug_toolbar',
     'polls.apps.PollsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
