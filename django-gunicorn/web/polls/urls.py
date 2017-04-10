@@ -2,6 +2,10 @@ from django.conf.urls import url
 
 from . import views
 
+# Set an application namespace for the URL configuration.
+app_name = 'polls'
+
+# Define URL patterns for this app.
 urlpatterns = [
     # example: /polls/
     url(r'^$', views.index, name='index'),
