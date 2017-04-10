@@ -14,5 +14,13 @@ urlpatterns = [
     # example: /polls/5/results/
     url(r'^(?P<question_id>[0-9]+)/results/$', views.results, name='results'),
     # example: /polls/5/vote/
-    url(r'^(?P<question_id>[0-9]+)/vote/$', views.vote, name='vote')
+    url(r'^(?P<question_id>[0-9]+)/vote/$', views.vote, name='vote'),
+    # example: /polls/views/
+    url(r'^view/$', views.IndexView.as_view(), name='view_index'),
+    # example: /polls/views/5/
+    url(r'^view/(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='view_detail'),
+    # example: /polls/views/5/results
+    url(r'^view/(?P<pk>[0-9]+)/results/$', views.ResultsView.as_view(), name='view_results'),
+    # example: /pools/views/5/vote
+    url(r'^view/(?P<question_id>[0-9]+)/vote/$', views.vote, name='view_vote')
 ]
