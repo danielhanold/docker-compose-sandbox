@@ -30,7 +30,7 @@ services:
     volumes_from:
       - web
     depends_on:
-    - web
+      - web
 
   # Requires modification on default Docker host on OSX.
   # @see https://github.com/docker-library/elasticsearch/issues/133#issuecomment-257459826
