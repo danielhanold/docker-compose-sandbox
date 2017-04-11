@@ -54,3 +54,6 @@ __pycache__
 # Django
 django-nomissez/config/elastic_search/backups/
 django-nomissez/config/elastic_search/backups.zip
+
+# Django (Gunicorn Version)
+django-gunicorn/web/static
