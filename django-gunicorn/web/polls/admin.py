@@ -12,6 +12,9 @@ class ChoiceInline(admin.TabularInline):
 
 class QuestionAdmin(admin.ModelAdmin):
 
+    # Adjust which fields get shown on list display.
+    list_display = ('question_text', 'pub_date', 'was_published_recently')
+
     # Example: Create a fieldset and put specific fields
     # into a fieldset.
     fieldsets = [
