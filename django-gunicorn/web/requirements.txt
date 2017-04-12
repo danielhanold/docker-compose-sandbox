@@ -3,3 +3,4 @@ psycopg2
 gunicorn
 elasticsearch
 django-debug-toolbar
+mysqlclient
