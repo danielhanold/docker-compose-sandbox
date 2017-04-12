@@ -25,7 +25,12 @@ class QuestionAdmin(admin.ModelAdmin):
             'fields': ['pub_date']
         })
     ]
+
+    # Add choices as an inline field to a question.
     inlines = [ChoiceInline]
+
+    # Add a filter that allows filtering by date.
+    list_filter = ['pub_date']
 
     # Example: Set the order of fields to appear, no fieldsets.
     # fields = ['pub_date', 'question_text']
