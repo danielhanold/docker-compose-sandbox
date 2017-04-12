@@ -32,6 +32,9 @@ class QuestionAdmin(admin.ModelAdmin):
     # Add a filter that allows filtering by date.
     list_filter = ['pub_date']
 
+    # Add a search box that allows searching by question text.
+    search_fields = ['question_text']
+
     # Example: Set the order of fields to appear, no fieldsets.
     # fields = ['pub_date', 'question_text']
 
