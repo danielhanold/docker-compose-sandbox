@@ -12,7 +12,8 @@ def index(request):
     # Example: Theme using "render" shortcut.
     latest_question_list = Question.objects.order_by('-pub_date')[:4]
     context = {
-        'latest_question_list': latest_question_list
+        'latest_question_list': latest_question_list,
+        'local_ip': request.META['REMOTE_ADDR']
     }
     return render(request, 'polls/index.html', context)
 

@@ -31,11 +31,21 @@ ALLOWED_HOSTS = [
     '192.168.99.100'
 ]
 
+# Bug with Docker: This IP might change, and the service name does
+# not seem to work in this case. Use the workaround mentioned here:
+# @see http://django-debug-toolbar.readthedocs.io/en/stable/installation.html?highlight=SHOW_TOOLBAR_CALLBACK
+def show_toolbar(request):
+    if request.is_ajax():
+        return False
+    return True
+
+DEBUG_TOOLBAR_CONFIG = {
+    'SHOW_TOOLBAR_CALLBACK': 'project.settings.show_toolbar',
+}
 
 # Application definition
 
 INSTALLED_APPS = [
-    #'debug_toolbar',
     'topics.apps.TopicsConfig',
     'polls.apps.PollsConfig',
     'django.contrib.admin',
@@ -44,9 +54,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
