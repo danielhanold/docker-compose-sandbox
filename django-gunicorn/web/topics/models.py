@@ -17,6 +17,10 @@ class Person(models.Model):
     def __str__(self):
         return " ".join([self.first_name, self.last_name])
 
+    class Meta:
+        # Define a verbose pluralized name.
+        verbose_name_plural = "people"
+
 
 class Musician(models.Model):
     def __str__(self):
