@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import date
 
 class Person(models.Model):
     first_name = models.CharField(max_length=30)
@@ -13,6 +14,25 @@ class Person(models.Model):
         choices=SHIRT_SIZES,
         default='M'
     )
+    birthday = models.DateField('birthday', default=date.today)
+
+    def baby_boomer_status(self):
+        """
+        Determine if this person is a baby boomer.
+        :return: String
+        """
+        import datetime
+        if self.birthday < datetime.date(1945, 8, 1):
+            return "Pre-boomer"
+        elif self.birthday < datetime.date(1965, 1, 1):
+            return "Baby boomer"
+        else:
+            return "Post-boomer"
+
+    @property
+    def full_name(self):
+        """Returns the person's full name."""
+        return '{} {}'.format(self.first_name, self.last_name)
 
     def __str__(self):
         return " ".join([self.first_name, self.last_name])
