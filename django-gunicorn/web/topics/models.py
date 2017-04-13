@@ -50,5 +50,30 @@ class Album(models.Model):
     media_type = models.CharField(
         max_length=10,
         choices=MEDIA_CHOICES,
-        default='cd'
+        default='cd',
+        help_text='If you still use anything but CDs, then you are super cool.'
     )
+
+
+class Manufacturer(models.Model):
+    """
+    Example for a many-to-one relationship:
+    - Manufacturer
+    - Cars
+
+    -> Each car has only one manufacture
+    -> Each manufacturer produces many cars
+    """
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+
+class Car(models.Model):
+    manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
