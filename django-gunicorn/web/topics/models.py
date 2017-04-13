@@ -152,3 +152,19 @@ class Restaurant(Place):
 
     serves_hot_dogs = models.BooleanField(default=False)
     serves_pizza = models.BooleanField(default=False)
+
+
+class OrderedPerson(Person):
+    """
+    Proxy models are used when the fields of a model will
+    generally NOT be changed, but instead it's just required to
+    add a method, define a different default manager, or change
+    other Meta properties.
+    
+    The below example will create a new Model that is a proxy
+    model. The only difference is the sorting for the model
+    list.
+    """
+    class Meta:
+        proxy = True
+        ordering = ['first_name']
