@@ -14,6 +14,9 @@ class Person(models.Model):
         default='M'
     )
 
+    def __str__(self):
+        return " ".join([self.first_name, self.last_name])
+
 
 class Musician(models.Model):
     def __str__(self):

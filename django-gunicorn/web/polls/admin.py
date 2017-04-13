@@ -23,6 +23,9 @@ class QuestionAdmin(admin.ModelAdmin):
         }),
         ('Date information', {
             'fields': ['pub_date']
+        }),
+        ('Related information', {
+            'fields': ['person']
         })
     ]
 
