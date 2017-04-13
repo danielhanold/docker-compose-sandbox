@@ -33,3 +33,22 @@ class Album(models.Model):
     release_date = models.DateField()
     num_stars = models.IntegerField()
 
+    # Add choices organized into groups.
+    MEDIA_CHOICES = (
+        ('Audio', (
+            ('vinyl', 'Vinyl'),
+            ('cd', 'CD'),
+        )
+         ),
+        ('Video', (
+            ('vhs', 'VHS Tape'),
+            ('dvd', 'DVD'),
+        )
+         ),
+        (None, 'Unknown'),
+    )
+    media_type = models.CharField(
+        max_length=10,
+        choices=MEDIA_CHOICES,
+        default='cd'
+    )
