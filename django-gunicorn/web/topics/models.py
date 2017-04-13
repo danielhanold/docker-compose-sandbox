@@ -134,3 +134,21 @@ class Student(CollegeCommon):
     Child class that uses CollegeCommon as a base class.
     """
     home_group = models.CharField(max_length=5)
+
+
+
+class Place(models.Model):
+    """
+    This is the parent model using multi-table inheritance.
+    Any child classes (e.g. Restaurant) will be linked
+    to the parent class by using a OneToOneField link.
+    """
+    name = models.CharField(max_length=50)
+    address = models.CharField(max_length=80)
+
+class Restaurant(Place):
+    def __str__(self):
+        return self.name
+
+    serves_hot_dogs = models.BooleanField(default=False)
+    serves_pizza = models.BooleanField(default=False)
