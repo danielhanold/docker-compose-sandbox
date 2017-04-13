@@ -115,3 +115,22 @@ class Car(models.Model):
     def __str__(self):
         return self.name
 
+
+class CollegeCommon(models.Model):
+    """
+    This model represents an abstract base class.
+    Abstract base classes don't generate any database tables,
+    but instead can be used by other models that will inherit
+    the fields defined in this class.
+    """
+    name = models.CharField(max_length=100)
+    age = models.PositiveIntegerField()
+
+    class Meta:
+        abstract = True
+
+class Student(CollegeCommon):
+    """
+    Child class that uses CollegeCommon as a base class.
+    """
+    home_group = models.CharField(max_length=5)
