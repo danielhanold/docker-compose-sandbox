@@ -50,6 +50,17 @@ class Musician(models.Model):
     last_name = models.CharField(max_length=50)
     instrument = models.CharField(max_length=100)
 
+    def save(self, *args, **kwargs):
+        """Overwrite the default save behavior with some custom
+        functionality. Obviously, this could be much more elaborate
+        than this example.
+        """
+        if (self.first_name == 'Tom'):
+            # Don't save any Musician with the first name 'Tom'.
+            return
+        else:
+            super(Musician, self).save(*args, **kwargs)
+
 
 class Album(models.Model):
     def __str__(self):
