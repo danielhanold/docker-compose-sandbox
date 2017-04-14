@@ -46,6 +46,7 @@ DEBUG_TOOLBAR_CONFIG = {
 # Application definition
 
 INSTALLED_APPS = [
+    'blog.apps.BlogConfig',
     'topics.apps.TopicsConfig',
     'polls.apps.PollsConfig',
     'django.contrib.admin',
