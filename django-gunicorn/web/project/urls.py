@@ -24,6 +24,12 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
 ]
 
+
+# Set a custom handler for the project-wide 404 page.
+# For the selected handlers, this will overwrite the default
+# location in templates/404.html.
+handler404 = 'project.views.project_custom_404_page'
+
 # Enable debug toolbar when site is running in debug mode.
 if settings.DEBUG:
     import debug_toolbar
