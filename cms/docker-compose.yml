@@ -5,7 +5,7 @@ services:
     image: mysql:5.7
     volumes:
       - db:/var/lib/mysql
-    restart: always
+    #restart: always
     # Required to connect to MySQL service from localhost, or host machine.
     # Port is required, as EXPOSE command in mysql image only indicates
     # that MySQL container is listening on the port. Onle listing the ports
@@ -25,15 +25,15 @@ services:
 
   nginx:
     image: haagendazs/drupal-nginx:2
-    restart: always
+    #restart: always
     volumes_from:
       - php
     ports:
-      - 8000:80
+      - 8000:8000
 
   php:
     image: haagendazs/drupal-php:4
-    restart: always
+    #restart: always
     volumes:
       - ./:/var/www/html
       - files:/var/www/html/files
@@ -51,7 +51,7 @@ services:
     container_name: phpmyadmin
     environment:
       - PMA_ARBITRARY=1
-    restart: always
+    #restart: always
     ports:
       - 8001:80
     volumes:
