@@ -9,6 +9,8 @@ app_name = 'polls'
 urlpatterns = [
     # example: /polls/
     url(r'^$', views.index, name='index'),
+    # example? /polls/missing_poll
+    url(r'^missing/$', views.missing_poll, name='missing'),
     # example: /polls/5/
     url(r'^(?P<question_id>[0-9]+)/$', views.detail, name='detail'),
     # example: /polls/5/results/

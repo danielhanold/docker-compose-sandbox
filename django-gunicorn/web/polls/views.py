@@ -1,9 +1,9 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.urls import reverse
-from django.http import Http404
 from django.views import generic
 from django.utils import timezone
+
 
 from .models import Question, Choice
 
@@ -28,6 +28,10 @@ def index(request):
     # Example: Theme directly in view.
     # output = "<br />".join([q.question_text for q in latest_question_list])
     # return HttpResponse(output)
+
+
+def missing_poll(request):
+    raise Http404("We could not find this page. Sad!")
 
 
 def detail(request, question_id):
