@@ -92,3 +92,11 @@ class Album(models.Model):
         default='cd',
         help_text='If you still use anything but CDs, then you are super cool.'
     )
+
+    class Meta:
+        """
+        Add an index across multiple fields.
+        """
+        index_together = [
+            ["media_type", "num_stars"]
+        ]
